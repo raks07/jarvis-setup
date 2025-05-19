@@ -59,6 +59,32 @@ The application consists of three main components across four GitHub repositorie
 
 See the [DEVELOPMENT.md](./DEVELOPMENT.md) file for detailed instructions on setting up and running the application.
 
+## API Documentation
+
+The application provides comprehensive API documentation through Swagger UI and ReDoc interfaces:
+
+### NestJS Backend API (jarvis-backend)
+
+- **Swagger UI**: [http://localhost:3000/api/docs](http://localhost:3000/api/docs)
+- Includes authentication, user, document, and ingestion management endpoints
+
+### Python Backend API (jarvis-datastore)
+
+- **Swagger UI**: [http://localhost:8000/api/docs](http://localhost:8000/api/docs)
+- **ReDoc**: [http://localhost:8000/api/redoc](http://localhost:8000/api/redoc)
+- Includes document ingestion, embedding generation, and RAG-based Q&A endpoints
+
+### Generating Static Documentation
+
+You can generate static HTML documentation using the included script:
+
+```bash
+# Ensure both backend services are running
+./generate_api_docs.sh
+```
+
+This creates a standalone HTML documentation that can be shared and viewed without running the services.
+
 ### Quick Start with Docker
 
 The easiest way to run the application is using Docker Compose:

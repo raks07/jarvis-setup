@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document Management and RAG-based Q&A API Documentation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+        color: #333;
+      }
+      header {
+        border-bottom: 1px solid #eee;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+      }
+      h1 {
+        color: #2c3e50;
+      }
+      h2 {
+        color: #3498db;
+        margin-top: 30px;
+      }
+      .api-section {
+        margin-bottom: 40px;
+        padding: 20px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      .button {
+        display: inline-block;
+        background-color: #3498db;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 4px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+      .button:hover {
+        background-color: #2980b9;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Document Management and RAG-based Q&A API Documentation</h1>
+      <p>This page provides links to the API documentation for the Document Management and RAG-based Q&A Application.</p>
+    </header>
+
+    <div class="api-section">
+      <h2>jarvis-backend API (NestJS)</h2>
+      <p>The NestJS backend provides user authentication, document management, and ingestion control.</p>
+      <p>
+        <a href="http://localhost:3000/api/docs" class="button" target="_blank">Swagger UI</a>
+        <a href="nestjs-backend/index.html" class="button" target="_blank">Static Documentation</a>
+      </p>
+      <h3>Key Endpoints</h3>
+      <table>
+        <tr>
+          <th>Endpoint</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>/auth/login</td>
+          <td>Authenticate and get JWT token</td>
+        </tr>
+        <tr>
+          <td>/auth/register</td>
+          <td>Register new user</td>
+        </tr>
+        <tr>
+          <td>/documents</td>
+          <td>Document management endpoints</td>
+        </tr>
+        <tr>
+          <td>/users</td>
+          <td>User management endpoints (admin only)</td>
+        </tr>
+        <tr>
+          <td>/ingestion</td>
+          <td>Ingestion management endpoints</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="api-section">
+      <h2>jarvis-datastore API (FastAPI)</h2>
+      <p>The FastAPI backend provides document processing, embedding generation, and RAG-based Q&A.</p>
+      <p>
+        <a href="http://localhost:8000/api/docs" class="button" target="_blank">Swagger UI</a>
+        <a href="http://localhost:8000/api/redoc" class="button" target="_blank">ReDoc</a>
+        <a href="fastapi-backend/index.html" class="button" target="_blank">Static Documentation</a>
+      </p>
+      <h3>Key Endpoints</h3>
+      <table>
+        <tr>
+          <th>Endpoint</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>/api/ingestion</td>
+          <td>Document ingestion and processing</td>
+        </tr>
+        <tr>
+          <td>/api/qa</td>
+          <td>Question answering endpoints</td>
+        </tr>
+        <tr>
+          <td>/api/selection</td>
+          <td>Document selection for Q&A</td>
+        </tr>
+        <tr>
+          <td>/health</td>
+          <td>Health check endpoint</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="api-section">
+      <h2>Combined API Documentation</h2>
+      <p>View a combined view of both APIs in a single interface.</p>
+      <p>
+        <a href="combined/index.html" class="button" target="_blank">Combined Documentation</a>
+      </p>
+    </div>
+
+    <footer>
+      <p>For more information, see the <a href="https://github.com/raks07/jarvis-setup" target="_blank">jarvis-setup</a> repository.</p>
+    </footer>
+  </body>
+</html>

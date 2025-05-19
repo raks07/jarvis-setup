@@ -2,7 +2,7 @@
 
 ## Overview
 
-I have set up a comprehensive foundation for our Document Management and RAG-based Q&A Application. The application consists of three main components, each with a well-defined structure and core functionality implemented.
+I have set up a comprehensive foundation for our Document Management and RAG-based Q&A Application. The application consists of three main components across four GitHub repositories, each with a well-defined structure and core functionality implemented.
 
 ## Accomplishments
 
@@ -12,7 +12,7 @@ I have set up a comprehensive foundation for our Document Management and RAG-bas
 - Established Docker and Docker Compose infrastructure for local development and deployment
 - Created comprehensive documentation including README files and development guide
 
-### 2. Python Backend (RAG and Document Ingestion)
+### 2. jarvis-datastore (RAG and Document Ingestion)
 
 - Set up FastAPI application structure with proper separation of concerns
 - Implemented database models for documents, chunks, embeddings, and Q&A
@@ -20,15 +20,15 @@ I have set up a comprehensive foundation for our Document Management and RAG-bas
 - Implemented service layer architecture for business logic
 - Provided basic implementations for embedding generation, document ingestion, and RAG-based Q&A
 
-### 3. NestJS Backend (User and Document Management)
+### 3. jarvis-backend (User and Document Management)
 
 - Set up NestJS application structure following best practices
 - Implemented entity models and DTOs for users, documents, and ingestion
 - Created authentication system with JWT and role-based authorization
 - Implemented controllers and services for user, document, and ingestion management
-- Added integration with Python backend for document ingestion
+- Added integration with jarvis-datastore for document ingestion
 
-### 4. React Frontend
+### 4. jarvis-frontend
 
 - Created modern UI using React and Material-UI
 - Implemented state management with Redux Toolkit
@@ -43,7 +43,7 @@ I have set up a comprehensive foundation for our Document Management and RAG-bas
 
 ## Step 2
 
-### Python Backend Completion
+### jarvis-datastore Completion
 
 1. Add database migrations using Alembic
 2. Implement actual embedding generation with a language model
@@ -51,16 +51,16 @@ I have set up a comprehensive foundation for our Document Management and RAG-bas
 4. Enhance RAG retrieval with proper vector search
 5. Optimize performance for large document collections
 
-### NestJS Backend Completion
+### jarvis-backend Completion
 
 1. Add database migrations using TypeORM
 2. Implement file upload handling with proper validation
-3. Complete integration with Python backend
+3. Complete integration with jarvis-datastore
 4. Add proper error handling and validation
 5. Implement monitoring and logging
 6. Add unit and integration tests
 
-### React Frontend Completion
+### jarvis-frontend Completion
 
 1. Implement real API integration replacing mock data
 2. Add form validation and error handling

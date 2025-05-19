@@ -13,21 +13,21 @@ This application allows users to:
 
 ## System Architecture
 
-The application consists of three main components:
+The application consists of three main components across four GitHub repositories:
 
-1. **Python Backend** - Document ingestion and RAG-based Q&A
+1. **[jarvis-datastore](https://github.com/raks07/jarvis-datastore)** - Document ingestion and RAG-based Q&A
    - FastAPI framework
    - Processes documents and generates embeddings
    - Provides RAG-based question answering capabilities
    - Includes PostgreSQL with pgvector extension for storing embeddings
 
-2. **NestJS Backend** - User and document management
+2. **[jarvis-backend](https://github.com/raks07/jarvis-backend)** - User and document management
    - User authentication and authorization
    - Role-based access control
    - Document metadata management
-   - Coordinates with Python backend for document ingestion
+   - Coordinates with jarvis-datastore for document ingestion
 
-3. **React Frontend** - User interface
+3. **[jarvis-frontend](https://github.com/raks07/jarvis-frontend)** - User interface
    - Modern, responsive UI built with React and Material-UI
    - Secure authentication flow
    - Document upload and management interface
@@ -66,7 +66,7 @@ The easiest way to run the application is using Docker Compose:
 ```bash
 # Clone the repository
 git clone <repository-url>
-cd jarvis
+cd <repository-name>
 
 # Generate a secure JWT secret for authentication
 JWT_SECRET=$(node -e "console.log(require('crypto').randomBytes(32).toString('hex'))")
@@ -111,7 +111,6 @@ python3 -c "import secrets; print(secrets.token_hex(32))"
 # Update the SECRET_KEY in the .env file
 # Replace 'your_secret_key_here' with the generated key
 sed -i '' "s/SECRET_KEY=.*/SECRET_KEY=your_generated_key_here/" ../python-backend/.env
-```
 
 sed -i '' "s/- JWT_SECRET=.*$/- JWT_SECRET=$JWT_SECRET/" docker-compose.yml
 

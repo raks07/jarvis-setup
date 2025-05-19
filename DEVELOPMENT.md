@@ -6,19 +6,20 @@ This document provides instructions for setting up and developing each component
 
 1. [Project Overview](#project-overview)
 2. [Getting Started](#getting-started)
-3. [Python Backend](#python-backend)
-4. [NestJS Backend](#nestjs-backend)
-5. [React Frontend](#react-frontend)
+3. [jarvis-datastore](#jarvis-datastore)
+4. [jarvis-backend](#jarvis-backend)
+5. [jarvis-frontend](#jarvis-frontend)
 6. [Docker Setup](#docker-setup)
 7. [Development Workflow](#development-workflow)
 
 ## Project Overview
 
-The application consists of three main components:
+The application consists of three main components across four GitHub repositories:
 
-1. **Python Backend** - Handles document ingestion, embedding generation, and RAG-based Q&A
-2. **NestJS Backend** - Manages user authentication and document management
-3. **React Frontend** - Provides user interface for all functionalities
+1. **[jarvis-datastore](https://github.com/raks07/jarvis-datastore)** - Handles document ingestion, embedding generation, and RAG-based Q&A
+2. **[jarvis-backend](https://github.com/raks07/jarvis-backend)** - Manages user authentication and document management
+3. **[jarvis-frontend](https://github.com/raks07/jarvis-frontend)** - Provides user interface for all functionalities
+4. **[jarvis-setup](https://github.com/raks07/jarvis-setup)** - Contains setup files, documentation, and Docker Compose configuration
 
 ## Getting Started
 
@@ -36,12 +37,12 @@ git clone <repository-url>
 cd jarvis
 ```
 
-## Python Backend
+## jarvis-datastore
 
 ### Setup
 
 ```bash
-cd python-backend
+cd jarvis-datastore  # Clone from https://github.com/raks07/jarvis-datastore
 
 # Create virtual environment
 python -m venv venv
@@ -63,12 +64,12 @@ uvicorn app.main:app --reload
 
 The API will be available at <http://localhost:8000>.
 
-## NestJS Backend
+## jarvis-backend
 
 ### Setup
 
 ```bash
-cd nestjs-backend
+cd jarvis-backend  # Clone from https://github.com/raks07/jarvis-backend
 
 # Install dependencies
 npm install
@@ -86,12 +87,12 @@ npm run start:dev
 
 The API will be available at <http://localhost:3000>.
 
-## React Frontend
+## jarvis-frontend
 
 ### Setup
 
 ```bash
-cd react-frontend
+cd jarvis-frontend  # Clone from https://github.com/raks07/jarvis-frontend
 
 # Install dependencies
 npm install

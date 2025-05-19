@@ -1,0 +1,104 @@
+services:
+  # PostgreSQL Database for NestJS Backend
+  postgres-nestjs:
+    image: postgres:14
+    container_name: jarvis-postgres-nestjs
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: jarvis_nestjs
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-nestjs-data:/var/lib/postgresql/data
+    networks:
+      - jarvis-network
+
+  # PostgreSQL Database with pgvector for Python Backend
+  postgres-python:
+    build:
+      context: ../python-backend/db/postgres-pgvector
+      dockerfile: Dockerfile
+    container_name: jarvis-postgres-python
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: jarvis_python
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres-python-data:/var/lib/postgresql/data
+    networks:
+      - jarvis-network
+
+  # NestJS Backend
+  nestjs-backend:
+    build:
+      context: ../nestjs-backend
+      dockerfile: Dockerfile
+    container_name: jarvis-nestjs-backend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres-nestjs
+    environment:
+      - NODE_ENV=development
+      - DATABASE_HOST=postgres-nestjs
+      - DATABASE_PORT=5432
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=postgres
+      - DATABASE_NAME=jarvis_nestjs
+      - JWT_SECRET=83e47ec9b1db70dd8cebdaafb3ceadd0ddca6dbf0706bd571f1d9bfbc504cd90
+      - PYTHON_BACKEND_URL=http://python-backend:8000
+    volumes:
+      - ../nestjs-backend:/app
+      - /app/node_modules
+    networks:
+      - jarvis-network
+
+  # Python Backend
+  python-backend:
+    build:
+      context: ../python-backend
+      dockerfile: Dockerfile
+    container_name: jarvis-python-backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres-python
+    environment:
+      - ENVIRONMENT=development
+      - DATABASE_URL=postgresql+asyncpg://postgres:postgres@postgres-python:5432/jarvis_python
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-dummy_key}
+    volumes:
+      - ../python-backend:/app
+    networks:
+      - jarvis-network
+
+  # React Frontend
+  react-frontend:
+    build:
+      context: ../react-frontend
+      dockerfile: Dockerfile
+    container_name: jarvis-react-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - nestjs-backend
+      - python-backend
+    volumes:
+      - ../react-frontend:/app
+      - /app/node_modules
+    networks:
+      - jarvis-network
+
+networks:
+  jarvis-network:
+    driver: bridge
+
+volumes:
+  postgres-nestjs-data:
+  postgres-python-data:
